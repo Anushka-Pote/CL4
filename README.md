@@ -1,0 +1,3 @@
+https://justpaste.it/d6a3n 
+
+this has all for CL4- BDA and DL....
