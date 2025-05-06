@@ -1,0 +1,42 @@
+### ⚙️ 1. Open CMD and navigate to your folder
+
+```bash
+cd %USERPROFILE%\Desktop\B04090463
+```
+
+
+### 🛠️ 2. Compile the Java code
+
+```bash
+javac -classpath "%HADOOP_HOME%\share\hadoop\common\*;%HADOOP_HOME%\share\hadoop\mapreduce\*;%HADOOP_HOME%\share\hadoop\common\lib\*;%HADOOP_HOME%\share\hadoop\hdfs\*;" -d . WordCount.java
+```
+
+
+### 📦 3. Create JAR file
+
+```bash
+jar -cvf wordcount.jar *.class
+```
+
+### 📁 4. Create input folder in HDFS and upload input.txt
+
+```bash
+hdfs dfs -mkdir /input
+hdfs dfs -put input.txt /input/
+```
+
+
+### 🚀 5. Run the Hadoop Job
+
+```bash
+hadoop jar wordcount.jar WordCount /input /output_wordcount
+```
+
+
+### 📄 6. Check Output
+
+```bash
+hdfs dfs -cat /output_wordcount/part-r-00000
+```
+
+
