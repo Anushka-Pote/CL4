@@ -1,0 +1,21 @@
+
+🛠️ 1. Compile the Java code
+
+javac -classpath "%HADOOP_HOME%\share\hadoop\common\*;%HADOOP_HOME%\share\hadoop\mapreduce\*;%HADOOP_HOME%\share\hadoop\common\lib\*;%HADOOP_HOME%\share\hadoop\hdfs\*;" -d . StudentGrades.java
+
+📦 2. Create the JAR file
+
+jar -cvf studentgrades.jar *.class
+
+📁 3. Create HDFS Input Directory and Upload Input File
+
+hdfs dfs -mkdir /gradesinput
+hdfs dfs -put grades.txt /gradesinput/
+
+🚀 4. Run the MapReduce Job
+
+hadoop jar studentgrades.jar StudentGrades /gradesinput /gradesoutput
+
+📄 5. View the Output
+
+hdfs dfs -cat /gradesoutput/part-r-00000
