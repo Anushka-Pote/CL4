@@ -1,0 +1,57 @@
+### ⚙️ 1. **Open CMD and go to the folder**
+
+Navigate to the folder containing the Java file and dataset:
+
+```bash
+cd %USERPROFILE%\Desktop\B04090463
+```
+
+---
+
+### 🛠️ 2. **Compile the Java code**
+
+```bash
+javac -classpath "%HADOOP_HOME%\share\hadoop\common\*;%HADOOP_HOME%\share\hadoop\mapreduce\*;%HADOOP_HOME%\share\hadoop\common\lib\*;%HADOOP_HOME%\share\hadoop\hdfs\*;" -d . MatrixMultiply.java
+```
+
+---
+
+### 📦 3. **Create the JAR file**
+
+```bash
+jar -cvf matrixmultiply.jar *.class
+```
+
+---
+
+### 📁 4. **Create HDFS input directory and upload the input file**
+
+Create an HDFS directory and upload your input file (for example, `matrix.txt`).
+
+```bash
+hdfs dfs -mkdir /matrixinput
+hdfs dfs -put matrix.txt /matrixinput/
+```
+
+---
+
+### 🚀 5. **Run the Hadoop Job**
+
+Run the MapReduce job with the following command:
+
+```bash
+hadoop jar matrixmultiply.jar MatrixMultiply /matrixinput /matrixoutput
+```
+
+This will start the matrix multiplication process.
+
+---
+
+### 📄 6. **View the result**
+
+Finally, check the output directory in HDFS:
+
+```bash
+hdfs dfs -cat /matrixoutput/part-r-00000
+```
+
